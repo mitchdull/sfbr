@@ -2,9 +2,11 @@
 
 ### Project Basis
 
-Building recognition using local oriented features
+Building recognition Using Local Oriented Features
+Jing Li and Nigel Allinson
 
-(see pdf for the paper)
+(see pdf in repository for the paper)
+
 
 ### Project Goal
 
