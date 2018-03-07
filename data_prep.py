@@ -289,15 +289,10 @@ if __name__ == "__main__":
 
             print(lda_input.shape)
 
-    # np.save("class_labels",class_labels)
-    # class_labels = np.load("class_labels.npy")
-
-
-
     '''
     dimensionality reduction by linear discriminant analysis from 256 to 39
     '''
-
+    np.save("dataset_256",lda_input)
     lda = LinearDiscriminantAnalysis(n_components=39)
     dataset = lda.fit(lda_input, class_labels).transform(lda_input)
 
