@@ -23,7 +23,7 @@ SFBR contains four parts:
 3. Dimensionality Reduction (Linear Discrimant Analysis)
 4. Classification (Support Vector Classifier)
 
-**Implementation**
+##### Implementation
 
 Based on steerable filter responses given at various locations.
 
@@ -31,7 +31,9 @@ Steerable filters are a set of basis filters which can synthesize any filter wit
 
 The basis filters and linear combination coefficients are defined in the paper.
 
-Utilizing openCV to import in grayscale and display images.
+**data_prep.py**
+
+Utilizing OpenCV to import in grayscale and display images.
 
 centeredFilter - creates a numpy array filled with coordinates of positions with (0,0) as the center of the matrix
 
@@ -46,20 +48,27 @@ Each 256 dimensional vector is then reduced to 39 dimensions through linear disc
 
 All of the above is done in the data_prep.py file to each image. The output dataset is saved as a pickled numpy array with class labels for each descriptive vector.
 
-The output of data_prep.py is a pickled numpy file used by classifier.py. This is becasue data_prep.py takes a very long time (hours) to run. 
+For convenience, the output of data_prep.py is a pickled numpy file used by classifier_test.py and classify.py. 
 
-The rest of the work is done in classifier.py.
+**classifier_test.py**
+
+The rest of the work is done in classifier_test.py.
 
 The data is scaled to be Gaussian distributed with zero mean and unit variance so the support vector classifier acts as expected.
 
 The overall dataset that was prepped in data_prep.py is then randomly split 50/50 into a training and test set. The training set and its label are then passed to the supervised learning algoithm. The program then passes the test set to the trained support vector classifier to predict the class of each building and compares that to the actual labels. Finally the number of correctly predicted images is printed to the console along with the precentage of correct predictions.
 
+**classify.py**
+
+Added to classify a single image. The image must be in the same size as the dataset images (160x120).
+Default image was found on google images courtesy of [Fragomen](https://www.fragomen.com/about/offices/gb/sheffield/overview)
 
 
 **Dataset Info**
 
-The Sheffield Building Image Dataset is used for training and for testing.
-https://www.shef.ac.uk/eee/research/iel/research/buildings_data
+The [Sheffield Building Image Dataset](https://www.shef.ac.uk/eee/research/iel/research/buildings_data) 
+is used for training and for testing.
+
 40 classes of building - each class represents a different building.
 within each class, the pictures vary in terms of lighting, orientation and the section the of building pictured.
 
